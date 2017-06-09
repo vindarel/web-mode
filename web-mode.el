@@ -2203,6 +2203,7 @@ another auto-completion with different ac-sources (e.g. ac-php)")
     (define-key map [menu-bar wm elt elt-end] '(menu-item "End" web-mode-element-end))
     (define-key map [menu-bar wm elt elt-inn] '(menu-item "Content (select)" web-mode-element-content-select))
     (define-key map [menu-bar wm elt elt-clo] '(menu-item "Close" web-mode-element-close))
+    (define-key map [menu-bar wm elt elt-com] '(menu-item "Comment" web-mode-element-comment))
     (define-key map [menu-bar wm elt elt-ins] '(menu-item "Insert" web-mode-element-insert))
     (define-key map [menu-bar wm elt elt-dup] '(menu-item "Clone" web-mode-element-clone))
     (define-key map [menu-bar wm elt elt-cfo] '(menu-item "Children fold" web-mode-element-children-fold-or-unfold))
@@ -2250,6 +2251,7 @@ another auto-completion with different ac-sources (e.g. ac-php)")
     (define-key map (kbd "C-c C-e a") 'web-mode-element-content-select)
     (define-key map (kbd "C-c C-e b") 'web-mode-element-beginning)
     (define-key map (kbd "C-c C-e c") 'web-mode-element-clone)
+    (define-key map (kbd "C-c C-e ;") 'web-mode-element-comment)
     (define-key map (kbd "C-c C-e d") 'web-mode-element-child)
     (define-key map (kbd "C-c C-e e") 'web-mode-element-end)
     (define-key map (kbd "C-c C-e f") 'web-mode-element-children-fold-or-unfold)
@@ -9250,6 +9252,13 @@ Prompt user if TAG-NAME isn't provided."
     (setq mark-active t)
     (web-mode-comment-or-uncomment)
     (pop-mark)))
+
+(defun web-mode-element-comment ()
+  "Comment the element around point."
+  (interactive)
+  (save-excursion
+    (web-mode-element-beginning)
+    (web-mode-comment (point))))
 
 (defun web-mode-comment-or-uncomment ()
   "Comment or uncomment line(s), block or region at POS."
