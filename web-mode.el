@@ -2216,6 +2216,7 @@ another auto-completion with different ac-sources (e.g. ac-php)")
     (define-key map [menu-bar wm exp]         '(menu-item "Mark and Expand" web-mode-mark-and-expand))
     (define-key map [menu-bar wm spa]         '(menu-item "Toggle whitespaces" web-mode-whitespaces-show))
     (define-key map [menu-bar wm sni]         '(menu-item "Insert snippet" web-mode-snippet-insert))
+    (define-key map [menu-bar wm sni]         '(menu-item "Comment or uncomment" web-mode-comment-or-uncomment))
 
     ;;--------------------------------------------------------------------------
     ;; "C-c <LETTER>" are reserved for users
